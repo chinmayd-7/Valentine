@@ -1,307 +1,333 @@
-<!-- https://script.google.com/macros/s/AKfycbzLPKomNtaFcBf3qhq4KsLa04JdQC31hzmodpaFcJ46a7fonz3VgfWqY3qys6SaTGmriQ/exec -->
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Will You Be My Valentine 💖</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Little Question for You ❤️</title>
 
-<style>
-body{
-  margin:0;
-  font-family:Segoe UI, sans-serif;
-  background:linear-gradient(135deg,#ffb6c1,#ffe4e1);
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-.card{
-  background:white;
-  padding:30px;
-  width:90%;
-  max-width:500px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 20px 40px rgba(0,0,0,0.25);
-}
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #ffe0e9, #fff0f5, #ffe4d6);
+      overflow-x: hidden;
+      color: #542638;
+    }
 
-h1,h2{color:#e75480}
+    .card {
+      width: 100%;
+      max-width: 430px;
+      padding: 35px 25px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 28px;
+      box-shadow: 0 15px 50px rgba(190, 65, 105, 0.17);
+      position: relative;
+      z-index: 1;
+      animation: appear 0.8s ease;
+    }
 
-.option{
-  background:#ffe4ec;
-  margin:10px 0;
-  padding:12px;
-  border-radius:15px;
-  cursor:pointer;
-}
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
 
-.option:hover{background:#ffc0cb}
+    .heart {
+      font-size: 58px;
+      margin-bottom: 12px;
+      animation: heartbeat 1.4s infinite;
+    }
 
-button{
-  background:#ff69b4;
-  color:white;
-  border:none;
-  padding:12px 25px;
-  border-radius:25px;
-  cursor:pointer;
-  margin-top:15px;
-}
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.12); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.08); }
+    }
 
-textarea{
-  width:100%;
-  height:80px;
-  border-radius:10px;
-  padding:10px;
-  margin-top:10px;
-}
+    .tag {
+      color: #d84e7c;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
 
-.popup{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.6);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(30px, 8vw, 39px);
+      line-height: 1.2;
+      margin-bottom: 18px;
+      color: #a52d59;
+    }
 
-.popup-content{
-  background:white;
-  padding:25px;
-  border-radius:20px;
-  max-width:350px;
-}
+    .message {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #76515e;
+      margin-bottom: 22px;
+    }
 
-img{
-  width:100%;
-  border-radius:15px;
-  margin:15px 0;
-}
-</style>
+    .question {
+      font-family: Georgia, serif;
+      font-size: 25px;
+      font-weight: bold;
+      line-height: 1.4;
+      margin: 20px 0;
+      color: #a52d59;
+    }
+
+    .location {
+      display: block;
+      margin: 22px 0;
+      padding: 15px;
+      background: #fff0f5;
+      border: 1px solid #f8d1df;
+      border-radius: 17px;
+      color: #a52d59;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .location:hover {
+      background: #ffe2ec;
+      transform: translateY(-2px);
+    }
+
+    .location strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 15px;
+    }
+
+    .location span {
+      font-size: 13px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    button {
+      border: none;
+      border-radius: 50px;
+      padding: 15px 20px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    .yes {
+      background: linear-gradient(135deg, #ed5685, #c92d68);
+      color: white;
+      box-shadow: 0 7px 18px rgba(201, 45, 104, 0.25);
+    }
+
+    .maybe {
+      background: #fff0f5;
+      color: #b43a65;
+      border: 1px solid #f4cad8;
+    }
+
+    .footer {
+      margin-top: 24px;
+      font-size: 12px;
+      color: #b28b99;
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -40px;
+      pointer-events: none;
+      animation: floatUp linear forwards;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      to {
+        transform: translateY(-115vh) rotate(25deg);
+        opacity: 0;
+      }
+    }
+
+    #success {
+      display: none;
+      margin-top: 20px;
+      padding: 17px;
+      border-radius: 16px;
+      background: #fff0f5;
+      line-height: 1.7;
+      color: #a52d59;
+    }
+
+    @media (max-width: 380px) {
+      .card {
+        padding: 28px 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<div id="app"></div>
+  <main class="card">
+    <div class="heart">💌</div>
 
-<script>
-// 🔴 PASTE YOUR GOOGLE SCRIPT URL HERE
-const API_URL = "https://script.google.com/macros/s/AKfycbzLPKomNtaFcBf3qhq4KsLa04JdQC31hzmodpaFcJ46a7fonz3VgfWqY3qys6SaTGmriQ/exec";
-let noCount = 0;
+    <div class="tag">A little question for you</div>
 
-let step = 0;
+    <h1>Hey, Beautiful! ❤️</h1>
 
-function logAnswer(question, selected, correct, isCorrect, extra=""){
-  fetch(API_URL,{
-    method:"POST",
-    body:JSON.stringify({
-      question,
-      selected,
-      correct,
-      isCorrect,
-      extra
-    })
-  });
-}
+    <p class="message">
+      I have something to ask you...
+      <br />
+      And honestly, I've been looking forward to this. 🥹
+    </p>
 
-function popup(msg, next=false){
-  closePopup(); // remove any existing popup first
-
-  document.body.insertAdjacentHTML("beforeend",`
-    <div class="popup">
-      <div class="popup-content">
-        <p>${msg}</p>
-        <button onclick="${next ? 'next()' : 'closePopup()'}">
-          ${next ? 'Next 💖' : 'Try Again 💕'}
-        </button>
-      </div>
+    <div class="question">
+      Will you go on a date with me? 🌷
     </div>
-  `);
-}
 
+    <p class="message">
+      Just you and me, some good vibes, lots of smiles,
+      and a memory worth keeping. 💗
+    </p>
 
-function closePopup(){
-  const popup = document.querySelector(".popup");
-  if (popup) popup.remove();
-}
+    <a
+      class="location"
+      href="https://maps.app.goo.gl/vBGvV6eThVmDKZep6?g_st=ic"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <strong>📍 Our little date destination</strong>
+      <span>Tap to see where I'm taking you ↗</span>
+    </a>
 
+    <p class="message">
+      Sooo... what do you say? 🙈
+    </p>
 
-function next(){
-  closePopup();
-  step++;
-  render();
-}
+    <div class="buttons">
+      <button class="yes" onclick="reply('yes')">
+        YES! Let's go! 💖
+      </button>
 
+      <button class="maybe" onclick="reply('maybe')">
+        Let me think about it 🙈
+      </button>
+    </div>
 
-function wrong(question, selected, correct) {
-  logAnswer(question, selected, correct, false);
+    <div id="success" role="status" aria-live="polite"></div>
 
-  let msg = "";
+    <p class="footer">
+      Made with a little courage and a lot of ❤️
+    </p>
+  </main>
 
-  if (question === "Q1")
-    msg = "😄 Hehe… not this one. That moment was too special to forget 💕";
+  <script>
+    // IMPORTANT:
+    // Replace this with your WhatsApp number, including country code.
+    // India example: 919876543210
+    // Do not include +, spaces, or dashes.
+    const YOUR_WHATSAPP_NUMBER = "91YOURNUMBER";
 
-  if (question === "Q2")
-    msg = "🤭 Not here… but I still remember that first hug so clearly 🫂💖";
+    const messages = {
+      yes: "YESSS! 💖 I'd love to go on a date with you! 🥹❤️",
+      maybe: "Awww 🙈 I need a little time to think about our date! 💗"
+    };
 
-  if (question === "Q3")
-    msg = "😌 Nope… but that place became magical because of us 💞";
+    function reply(choice) {
+      const status = document.getElementById("success");
 
-  if (question === "Q4")
-    msg = "🥹 That answer felt incomplete… try again from your heart 💖";
+      if (
+        YOUR_WHATSAPP_NUMBER === "91YOURNUMBER" ||
+        !/^\d{8,15}$/.test(YOUR_WHATSAPP_NUMBER)
+      ) {
+        status.style.display = "block";
+        status.textContent =
+          "The WhatsApp number hasn't been configured yet. Ask the person who made this page to update it. ❤️";
+        return;
+      }
 
-  popup(msg);
-}
+      const text = encodeURIComponent(
+        messages[choice] +
+        "\n\nI saw your cute date invitation! 🥰"
+      );
 
+      const url =
+        "https://wa.me/" +
+        YOUR_WHATSAPP_NUMBER +
+        "?text=" +
+        text;
 
-function correct(question, selected, correctAnswer) {
-  logAnswer(question, selected, correctAnswer, true);
+      // Open WhatsApp with the message ready to send.
+      window.open(url, "_blank", "noopener,noreferrer");
 
-  let msg = "";
+      status.style.display = "block";
+      status.textContent =
+        choice === "yes"
+          ? "YAYYY! 🥹💖 Send your message on WhatsApp to confirm!"
+          : "No pressure, take your time. ❤️ You can send your reply on WhatsApp.";
+    }
 
-  if (question === "Q1")
-    msg = "🥰 YESSS! You remembered the exact moment 💖 That night changed everything ✨";
+    // Gentle floating hearts in the background.
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-  if (question === "Q2")
-    msg = "🫂 Awww… that hug still lives in my heart 🥹💞";
+    if (!reduceMotion) {
+      const hearts = ["❤️", "💕", "💗", "🌸", "💖"];
 
-  if (question === "Q3")
-    msg = "🌄 Perfect! That view + you = forever memory 💖";
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "floating-heart";
+        heart.textContent =
+          hearts[Math.floor(Math.random() * hearts.length)];
 
-  if (question === "Q4")
-    msg = "🥹 Reading this made my heart melt… thank you for loving me 💕";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = 14 + Math.random() * 20 + "px";
+        heart.style.animationDuration = 5 + Math.random() * 5 + "s";
 
-  popup(msg, true);
-}
+        document.body.appendChild(heart);
 
-
-function playfulNo() {
-  noCount++;
-
-  let message = "";
-
-  if (noCount === 1) {
-    message = "😭 How can you do this to me…<br><br>Choose wisely 💖";
-  } else if (noCount === 2) {
-    message = "😢 My heart just skipped a beat…<br><br>I really thought you’d say yes 🥺";
-  } else {
-    message = "😌 Okay okay… I know you.<br><br>You’ll say YES, I trust you 💕";
-  }
-
-  logAnswer(
-    "Q5 Valentine",
-    `No/Maybe (${noCount})`,
-    "Yes",
-    false,
-    `Popup shown: ${noCount}`
-  );
-
-  popup(message);
-}
-
-
-function render(){
-  const app=document.getElementById("app");
-
-  if(step===0){
-    app.innerHTML=`
-    <div class="card">
-      <h1>Hey My Love 💌</h1>
-      <p>I made something special just for you 💖</p>
-      <button onclick="next()">Start 💕</button>
-    </div>`;
-  }
-
-  if(step===1){
-    app.innerHTML=`
-    <div class="card">
-      <h2>Question 1 ❣️</h2>
-      <p>When did I confess my feelings?</p>
-      <div class="option" onclick="wrong('Q1','14 Feb 2025','3 May 2025 00:56 AM')">14 Feb 2025</div>
-      <div class="option" onclick="wrong('Q1','3 May 2025 12:56 PM','3 May 2025 00:56 AM')">3 May 2025 – 12:56 PM</div>
-      <div class="option" onclick="correct('Q1','3 May 2025 00:56 AM','3 May 2025 00:56 AM')">3 May 2025 – 00:56 AM</div>
-      <div class="option" onclick="wrong('Q1','3 May 2025 12:56 AM','3 May 2025 00:56 AM')">3 May 2025 – 12:56 AM</div>
-    </div>`;
-  }
-
-  if(step===2){
-    app.innerHTML=`
-    <div class="card">
-      <h2>Question 2 🤗</h2>
-      <p>Where did we hug first?</p>
-      <div class="option" onclick="wrong('Q2','Inside theatre','Outside theatre')">Inside theatre</div>
-      <div class="option" onclick="correct('Q2','Outside theatre','Outside theatre')">Outside theatre</div>
-      <div class="option" onclick="wrong('Q2','Bus stop','Outside theatre')">Bus stop</div>
-      <div class="option" onclick="wrong('Q2','Home','Outside theatre')">Home</div>
-    </div>`;
-  }
-
-  if(step===3){
-    app.innerHTML=`
-    <div class="card">
-      <h2>Question 3 🏞️</h2>
-      <p>Where did we recreate this?</p>
-      <img src="X.jpg">
-      <div class="option" onclick="wrong('Q3','Marine Drive','Tiger Point')">Marine Drive</div>
-      <div class="option" onclick="correct('Q3','Tiger Point, Lonavala','Tiger Point')">Tiger Point, Lonavala</div>
-      <div class="option" onclick="wrong('Q3','Mahabaleshwar','Tiger Point')">Mahabaleshwar</div>
-      <div class="option" onclick="wrong('Q3','Pawna Lake','Tiger Point')">Pawna Lake</div>
-    </div>`;
-  }
-
-  if(step===4){
-    app.innerHTML=`
-    <div class="card">
-      <h2>Question 4 ✍️</h2>
-      <textarea id="why" placeholder="Why do you love me? 💖"></textarea>
-      <textarea id="gift" placeholder="Favourite gift 🎁"></textarea>
-      <button onclick="submitText()">Submit 💕</button>
-    </div>`;
-  }
-
-  if(step===5){
-    app.innerHTML=`
-    <div class="card">
-      <h2>Final Question 💍</h2>
-      <p>Will you be my Valentine?</p>
-      <div class="option" onclick="playfulNo()">No 😅</div>
-      <div class="option" onclick="playfulNo()">Maybe 🤔</div>
-      <div class="option" onclick="correct('Q5','Yes','Yes')">YES 💖</div>
-
-    </div>`;
-  }
-
-  if(step===6){
-    app.innerHTML=`
-    <div class="card">
-      <h1>YEAYYYY!!! 🎉💖</h1>
-      <h2>I WON 🥰</h2>
-      <p>Happy Valentine’s my love 💞✨🫶</p>
-    </div>`;
-  }
-}
-
-function submitText(){
-  const why = document.getElementById("why").value.trim();
-  const gift = document.getElementById("gift").value.trim();
-
-  if (!why || !gift) {
-    popup("🥺 Don’t leave this empty… I really want to know 💖");
-    return;
-  }
-
-  logAnswer(
-    "Q4",
-    "Text Submitted",
-    "Heartfelt Answer",
-    true,
-    `Why: ${why} | Gift: ${gift}`
-  );
-
-  popup("🥹 Reading this made my heart melt… thank you for loving me 💕", true);
-}
-
-
-render();
-</script>
+        setTimeout(() => heart.remove(), 11000);
+      }, 700);
+    }
+  </script>
 </body>
 </html>
