@@ -274,15 +274,12 @@
     function reply(choice) {
       const status = document.getElementById("success");
 
-      if (
-        YOUR_WHATSAPP_NUMBER === "91YOURNUMBER" ||
-        !/^\d{8,15}$/.test(YOUR_WHATSAPP_NUMBER)
-      ) {
+
         status.style.display = "block";
         status.textContent =
           "The WhatsApp number hasn't been configured yet. Ask the person who made this page to update it. ❤️";
         return;
-      }
+      
 
       const text = encodeURIComponent(
         messages[choice] +
